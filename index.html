@@ -145,7 +145,6 @@
       #filter {
         display: none;
         z-index: 3;
-        pointer-events: none;
         position: fixed;
         height: 100%;
         width: 100%;
@@ -155,10 +154,15 @@
         display: none;
         z-index: 4;
         position: fixed;
-        height: 100%;
-        width: 100%;
         background: white;
         flex-direction: column;
+        width: 400px;
+        height: 400px;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
       }
       #form-header {
         background: var( --primary );
@@ -180,6 +184,10 @@
         }
         #fab {
           display: flex;
+        }
+        #form {
+          height: 100%;
+          width: 100%;
         }
       }
     </style>
@@ -254,6 +262,7 @@
     const navigation = document.getElementById( 'navigation' )
     const quote = document.getElementById( 'quote' )
     const fab = document.getElementById( 'fab' )
+    const filter = document.getElementById( 'filter' )
     const form = document.getElementById( 'form' )
     const formClose = document.getElementById( 'form-close' )
 
@@ -273,14 +282,18 @@
 
     quote.addEventListener( 'click', () => {
       form.style.display = 'flex'  
+      filter.style.display = 'block'  
+
     } )
 
     fab.addEventListener( 'click', () => {
-      form.style.display = 'flex'  
+      form.style.display = 'flex' 
+      filter.style.display = 'block'  
     } )
 
     formClose.addEventListener( 'click', () => {
       form.style.display = 'none'
+      filter.style.display = 'none'  
     } )
   </script>
 </html>
