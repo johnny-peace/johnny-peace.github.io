@@ -58,6 +58,7 @@
       }
       #title {
         padding: 0px 16px;
+        white-space: nowrap;
       }
       #quote {
         display: flex;
@@ -70,11 +71,12 @@
         background: none;
         font-size: large;
         color: var( --primary );
+        white-space: nowrap;
       }
       #quote svg {
         fill: var( --primary );
       }
-      @media only screen and ( max-width: 360px ) {
+      @media only screen and ( max-width: 400px ) {
         #quote {
           display: none;
         }
