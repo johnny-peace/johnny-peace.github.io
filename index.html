@@ -142,6 +142,38 @@
       #fab:hover {
         filter: brightness( 1.25 );
       }
+      #filter {
+        display: none;
+        z-index: 3;
+        pointer-events: none;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: rgba( 0, 0, 0, 0.66 );
+      }
+      #form {
+        display: none;
+        z-index: 4;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+      }
+      #form-header {
+        background: var( --primary );
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        height: 48px;
+      }
+      #form-header svg {
+        cursor: pointer;
+        margin: 8px;
+        fill: white;
+      }
       @media only screen and ( max-width: 400px ) {
         #quote {
           display: none;
@@ -199,16 +231,31 @@
         <path d="M240 656h480v-60H240v60Zm0-130h480v-60H240v60Zm0-130h480v-60H240v60Zm640 580L720 816H140q-23 0-41.5-18.5T80 756V236q0-23 18.5-41.5T140 176h680q24 0 42 18.5t18 41.5v740ZM140 236v520h605l75 75V236H140Zm0 0v595-595Z"/>
       </svg>
     </button>
+    <div id="filter">
+
+    </div>
+    <div id="form">
+      <div id="form-header">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24" id="form-close">
+          <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+        </svg>
+        Get Quote
+      </div>
+    </div>
   </body>
   <script>
     const state = {
-      navigation: false
+      navigation: false,
     }
 
     const menu = document.getElementById( 'menu' )
     const menuOpen = document.getElementById( 'menu-open' )
     const menuClose = document.getElementById( 'menu-close' )
     const navigation = document.getElementById( 'navigation' )
+    const quote = document.getElementById( 'quote' )
+    const fab = document.getElementById( 'fab' )
+    const form = document.getElementById( 'form' )
+    const formClose = document.getElementById( 'form-close' )
 
     menu.addEventListener( 'click', () => {
       if ( !state.navigation ) {
@@ -222,6 +269,18 @@
         menuClose.style.display = 'none'
         state.navigation = false
       }
+    } )
+
+    quote.addEventListener( 'click', () => {
+      form.style.display = 'flex'  
+    } )
+
+    fab.addEventListener( 'click', () => {
+      form.style.display = 'flex'  
+    } )
+
+    formClose.addEventListener( 'click', () => {
+      form.style.display = 'none'
     } )
   </script>
 </html>
