@@ -429,6 +429,7 @@
     const gallery = document.getElementById( 'gallery' )
     const previous = document.getElementById( 'previous' )
     const next = document.getElementById( 'next' )
+    const content = document.getElementById( 'content' )
 
     menu.addEventListener( 'click', () => {
       if ( !state.navigation ) {
@@ -442,6 +443,13 @@
         menuClose.style.display = 'none'
         state.navigation = false
       }
+    } )
+
+    content.addEventListener( 'click', () => {
+      navigation.classList.remove( 'navigation-open' )
+      menuOpen.style.display = 'block'
+      menuClose.style.display = 'none'
+      state.navigation = false
     } )
 
     quote.addEventListener( 'click', () => {
