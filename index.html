@@ -464,22 +464,24 @@
         </svg>
         Get Quote
       </div>
-      <form action="" method="POST" id="form-logic">
+      <form action="" method="POST" id="form-action">
         <div style="display: flex; flex-direction: row; padding: 16px 8px 4px 8px; justify-content: space-around;">
-          <input placeholder="First Name">
-          <input placeholder="Last Name">
+          <input placeholder="First Name" name="firstName">
+          <input placeholder="Last Name" name="lastName">
         </div>
         <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
-          <input placeholder="Email">
+          <input placeholder="Email" type="email" name="email">
         </div>
         <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
-          <input placeholder="Message Subject">
+          <input placeholder="Message Subject" name="subject">
         </div>
         <div style="display: flex; flex-direction: row; padding: 4px 8px 8px 8px; justify-content: space-around;">
-          <textarea placeholder="Describe your project here."></textarea>
+          <textarea placeholder="Describe your project here." name="message"></textarea>
         </div>
-        <button id="send">Send</button>
+        <button id="send" type="submit">Send</button>
+        <input type="text" name="_gotcha" style="display:none" />
       </form>
+
     </div>
 
   </body>
@@ -506,6 +508,7 @@
     const next = document.getElementById( 'next' )
     const content = document.getElementById( 'content' )
     const send = document.getElementById( 'send' )
+    const formAction= document.getElementById( 'form-action' )
 
     menu.addEventListener( 'click', () => {
       if ( !state.navigation ) {
@@ -575,13 +578,12 @@
     } )
 
     send.addEventListener( 'click', () => {
-      const x = [ 23, 2, 21, 1, 3, 18, 14, 16, 18, 25, 14, 1, 17, 6, 16, 14, 3, 18 ]
-      let z = ""
+      let x = [ 11, 2, 4, 13, 24, 17, 17, 14 ]
+      let z = "";
       for (var i = 0; i < x.length; i++){
-        z += String.fromCharCode(((x[i] + 13) % 26) + 96)
+          z += String.fromCharCode(((x[i] + 13) % 26) + 96);
       }
-      const string = "https://formspree.io/"+y()+"@gmail.com"
-		  form.action=string
+		  formAction.action = `https://formspree.io/f/${ z.replace( '`', 'z' ) }`
     } )
 
     setInterval( () => {
