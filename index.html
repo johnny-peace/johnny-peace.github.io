@@ -147,6 +147,9 @@
       #fab:hover {
         filter: brightness( 1.25 );
       }
+      #fab svg {
+        fill: white;
+      }
       #filter {
         display: none;
         z-index: 3;
@@ -220,6 +223,17 @@
         max-width: 300px;
         margin-bottom: 16px;
         text-align: center;
+      }
+      #secondary-quote-button {
+        border: none;
+        background: none;
+        color: white;
+        outline: none;
+        border-bottom: 1px solid white;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        font-size: 16px;
       }
       #banner {
         position: relative;
@@ -366,7 +380,7 @@
           <h1>Peace Landscaping</h1>
         </div>
         <div id="services-description">
-          Your solution for lawn and yard needs. Get a quote today and find peace.
+          Your solution for lawn and yard needs. Get a <button id="secondary-quote-button">quote</button> today and find peace.
         </div>
         <div id="banner">
           <div class="flag">
@@ -423,6 +437,7 @@
     const navigation = document.getElementById( 'navigation' )
     const quote = document.getElementById( 'quote' )
     const fab = document.getElementById( 'fab' )
+    const secondaryQuoteButton = document.getElementById( 'secondary-quote-button' )
     const filter = document.getElementById( 'filter' )
     const form = document.getElementById( 'form' )
     const formClose = document.getElementById( 'form-close' )
@@ -455,10 +470,14 @@
     quote.addEventListener( 'click', () => {
       form.style.display = 'flex'  
       filter.style.display = 'block'  
-
     } )
 
     fab.addEventListener( 'click', () => {
+      form.style.display = 'flex' 
+      filter.style.display = 'block'  
+    } )
+
+    secondaryQuoteButton.addEventListener( 'click', () => {
       form.style.display = 'flex' 
       filter.style.display = 'block'  
     } )
