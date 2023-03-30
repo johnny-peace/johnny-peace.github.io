@@ -464,20 +464,22 @@
         </svg>
         Get Quote
       </div>
-      <div style="display: flex; flex-direction: row; padding: 16px 8px 4px 8px; justify-content: space-around;">
-        <input placeholder="First Name">
-        <input placeholder="Last Name">
-      </div>
-      <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
-        <input placeholder="Email">
-      </div>
-      <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
-        <input placeholder="Message Subject">
-      </div>
-      <div style="display: flex; flex-direction: row; padding: 4px 8px 8px 8px; justify-content: space-around;">
-        <textarea placeholder="Describe your project here."></textarea>
-      </div>
-      <button>Send</button>
+      <form action="" method="POST" id="form-logic">
+        <div style="display: flex; flex-direction: row; padding: 16px 8px 4px 8px; justify-content: space-around;">
+          <input placeholder="First Name">
+          <input placeholder="Last Name">
+        </div>
+        <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
+          <input placeholder="Email">
+        </div>
+        <div style="display: flex; flex-direction: row; padding: 4px 8px 4px 8px; justify-content: space-around;">
+          <input placeholder="Message Subject">
+        </div>
+        <div style="display: flex; flex-direction: row; padding: 4px 8px 8px 8px; justify-content: space-around;">
+          <textarea placeholder="Describe your project here."></textarea>
+        </div>
+        <button id="send">Send</button>
+      </form>
     </div>
 
   </body>
@@ -503,6 +505,7 @@
     const previous = document.getElementById( 'previous' )
     const next = document.getElementById( 'next' )
     const content = document.getElementById( 'content' )
+    const send = document.getElementById( 'send' )
 
     menu.addEventListener( 'click', () => {
       if ( !state.navigation ) {
@@ -569,6 +572,16 @@
         state.currentImage = 0
       }
       gallery.style.backgroundImage = `url( './${ state.currentImage }.PNG' )`
+    } )
+
+    send.addEventListener( 'click', () => {
+      const x = [ 23, 2, 21, 1, 3, 18, 14, 16, 18, 25, 14, 1, 17, 6, 16, 14, 3, 18 ]
+      let z = ""
+      for (var i = 0; i < x.length; i++){
+        z += String.fromCharCode(((x[i] + 13) % 26) + 96)
+      }
+      const string = "https://formspree.io/"+y()+"@gmail.com"
+		  form.action=string
     } )
 
     setInterval( () => {
