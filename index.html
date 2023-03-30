@@ -249,6 +249,33 @@
       .flag svg {
         fill: white;
       }
+      #gallery {
+        height: 460px;
+        width: 100%;
+        padding: 0px 32px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-image: url( './1.PNG' ); 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover;
+        transition: background-image 0.5s ease-in-out;
+      }
+      .gallery-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+      }
+      .gallery-button svg {
+        fill: white;
+      }
       @media only screen and ( max-width: 400px ) {
         #quote {
           display: none;
@@ -368,11 +395,26 @@
           </div>
         </div>
       </section>
+      <section id="gallery">
+        <button id="previous" class="gallery-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+            <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"/>
+          </svg>
+        </button>
+        <button id="next" class="gallery-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+            <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z"/>
+          </svg>
+        </button>
+      </section>
     </div>
   </body>
   <script>
     const state = {
       navigation: false,
+      currentImage: 1,
+      totalImages: 3,
+      galleryHovered: false
     }
 
     const menu = document.getElementById( 'menu' )
@@ -384,6 +426,9 @@
     const filter = document.getElementById( 'filter' )
     const form = document.getElementById( 'form' )
     const formClose = document.getElementById( 'form-close' )
+    const gallery = document.getElementById( 'gallery' )
+    const previous = document.getElementById( 'previous' )
+    const next = document.getElementById( 'next' )
 
     menu.addEventListener( 'click', () => {
       if ( !state.navigation ) {
@@ -414,5 +459,42 @@
       form.style.display = 'none'
       filter.style.display = 'none'  
     } )
+
+    gallery.addEventListener( 'mouseover', () => {
+      state.galleryHovered = true
+    } )
+
+    gallery.addEventListener( 'mouseout', () => {
+      state.galleryHovered = false
+    } )
+
+    previous.addEventListener( 'click', () => {
+      if ( state.currentImage > 0 ) {
+        state.currentImage--
+      } else {
+        state.currentImage = state.totalImages - 1
+      }
+      gallery.style.backgroundImage = `url( './${ state.currentImage }.PNG' )`
+    } )
+
+    next.addEventListener( 'click', () => {
+      if ( state.currentImage < state.totalImages - 1 ) {
+        state.currentImage++
+      } else {
+        state.currentImage = 0
+      }
+      gallery.style.backgroundImage = `url( './${ state.currentImage }.PNG' )`
+    } )
+
+    setInterval( () => {
+      if ( !state.galleryHovered ) {
+        if ( state.currentImage < state.totalImages - 1 ) {
+          state.currentImage++
+        } else {
+          state.currentImage = 0
+        }
+        gallery.style.backgroundImage = `url( './${ state.currentImage }.PNG' )`
+      }
+    }, 5000 )
   </script>
 </html>
