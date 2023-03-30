@@ -16,14 +16,15 @@
           font-style: normal;
       }
       :root {
-          --success: #00C851;
-          --error: #CF6679;
+        --success: #00C851;
+        --error: #CF6679;
 
-          --primary: #4CAF50;
+        --primary: #4CAF50;
       }
       * {
-          box-sizing: border-box;
-          font-family: 'Roboto-Light', sans-serif;
+        box-sizing: border-box;
+        font-family: 'Roboto-Light', sans-serif;
+        scroll-behavior: smooth;
       }
       html, body {
         padding: 0px;
@@ -87,6 +88,7 @@
         filter: brightness( 1.25 );
       }
       #navigation {
+        background: white;
         display: flex;
         flex-direction: column;
         z-index: 1;
@@ -121,6 +123,9 @@
       .navigation-button svg {
         margin-right: 8px;
         fill: var( --primary );
+      }
+      .navigation-button a {
+        color: var( --primary );
       }
       #fab {
         z-index: 2;
@@ -178,6 +183,72 @@
         margin: 8px;
         fill: white;
       }
+      #content {
+        padding-top: 48px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      #services {
+        height: 460px; 
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #services-background {
+        width: 100%; 
+        position: absolute; 
+        filter: brightness( 0.66 ); 
+        height: 460px; 
+        background-image: url( './0.PNG' ); 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover;
+      }
+      #services-title {
+        text-align: center;
+        font-size: 24px;
+        position: relative;
+        color: white;
+        padding-top: 80px;
+      }
+      #services-description {
+        position: relative;
+        color: white;
+        max-width: 300px;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      #banner {
+        position: relative;
+        width: 100%;
+        min-width: 240px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .flag {
+        margin: 8px;
+        height: 120px;
+        width: 120px;
+        background: #388E3C;
+        opacity: 0.8;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 2px 2px 2px  rgba( 0, 0, 0, 0.2 );
+      }
+      .flag svg {
+        fill: white;
+      }
       @media only screen and ( max-width: 400px ) {
         #quote {
           display: none;
@@ -193,6 +264,7 @@
     </style>
   </head>
   <body>
+
     <div id="header">
       <button id="menu">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24" id="menu-open">
@@ -214,34 +286,42 @@
         </div>
       </button>
     </div>
+
     <div id="navigation">
       <button class="navigation-button">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
           <path d="M80 896v-60h240q-20-91-87.5-159.5T80 586q20-5 39.5-7.5T160 576q134 0 227 93t93 227H80Zm460 0q0-42-8-73.5T512 760q40-88 120-136t168-48q21 0 40.5 2.5T880 586q-85 22-154 91.5T640 836h240v60H540Zm-58-193q-9-76 13-142t64.5-115Q602 397 662 368t127-31q-56 35-105.5 95.5T621 562q-44 21-80 58.5T482 703Zm-61-76q-16-15-35-30t-32-23q3-12 4.5-26.5T360 524q0-76-24-144t-68-124q70 28 124 88.5T468 483q-18 32-30.5 69.5T421 627Z"/>
         </svg>
+        <a href="#services">
         Services
+        </a>
       </button>
       <button class="navigation-button">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
           <path d="M480 876q0-97-69.5-166.5T244 640q0 97 69.5 166.5T480 876Zm0-220q27 0 43.5-16.5T540 596v-8q8 7 18 9t19 2q27 0 43.5-16.5T637 539q0-20-9-33t-24-24q15-6 24-21.5t9-35.5q0-27-16.5-43.5T577 365q-9 0-19 2t-18 9v-8q0-27-16.5-43.5T480 308q-27 0-43.5 16.5T420 368v8q-8-7-18-9t-19-2q-27 0-43.5 16.5T323 425q0 20 8.5 33.5T356 482q-16 7-24.5 22t-8.5 35q0 27 16.5 43.5T383 599q9 0 19.5-2t17.5-9v8q0 27 16.5 43.5T480 656Zm0-96q-33 0-55.5-22.5T402 482q0-33 22.5-55.5T480 404q33 0 55.5 22.5T558 482q0 33-22.5 55.5T480 560Zm0 316q97 0 166.5-69.5T716 640q-97 0-166.5 69.5T480 876ZM80 976V176h800v800H80Zm60-60h680V236H140v680Zm0 0V236v680Z"/>
         </svg>
+        <a href="#gallery">
         Gallery
+        </a>
       </button>
       <button class="navigation-button">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
           <path d="M80 896V256h800v640H80Zm400-302L140 371v465h680V371L480 594Zm0-60 336-218H145l335 218ZM140 371v-55 55Z"/>
         </svg>
+        <a href="#contact">
         Contact
+        </a>
       </button>
     </div>
+
     <button id="fab">
       <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
         <path d="M240 656h480v-60H240v60Zm0-130h480v-60H240v60Zm0-130h480v-60H240v60Zm640 580L720 816H140q-23 0-41.5-18.5T80 756V236q0-23 18.5-41.5T140 176h680q24 0 42 18.5t18 41.5v740ZM140 236v520h605l75 75V236H140Zm0 0v595-595Z"/>
       </svg>
     </button>
-    <div id="filter">
 
-    </div>
+    <div id="filter"></div>
+
     <div id="form">
       <div id="form-header">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24" id="form-close">
@@ -249,6 +329,45 @@
         </svg>
         Get Quote
       </div>
+    </div>
+
+    <div id="content">
+      <section id="services">
+        <div id="services-background">
+        </div>
+        <div id="services-title">
+          <h1>Peace Landscaping</h1>
+        </div>
+        <div id="services-description">
+          Your solution for lawn and yard needs. Get a quote today and find peace.
+        </div>
+        <div id="banner">
+          <div class="flag">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+              <path d="M210 896V726h-90v-60h90V566h-90v-60h90V366l110-110 80 80 81-80 80 80 80-80 110 110v140h89v60h-89v100h89v60h-89v170H210Zm60-390h100V391l-50-50-50 50v115Zm160 0h100V391l-50-50-50 50v115Zm161 0h99V391l-50-50-49 49v116ZM270 666h100V566H270v100Zm160 0h100V566H430v100Zm161 0h99V566h-99v100ZM270 836h100V726H270v110Zm160 0h100V726H430v110Zm161 0h99V726h-99v110Z"/>
+            </svg>
+            <div>Landscaping</div>
+          </div>
+          <div class="flag">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+              <path d="M538 976H423V827H120l189-274h-95l266-377 266 377h-94l188 274H538v149ZM236 767h189-90 290-89 189-489Zm0 0h489L536 493h89L480 287 335 493h90L236 767Z"/>
+            </svg>
+            <div>Fall Cleanup</div>
+          </div>
+          <div class="flag">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+              <path d="M480 578q-17.425 0-29.212-11.787Q439 554.425 439 537t11.788-29.213Q462.575 496 480 496q17.425 0 29.212 11.787Q521 519.575 521 537t-11.788 29.213Q497.425 578 480 578Zm0-160q-17.425 0-29.212-11.787Q439 394.425 439 377t11.788-29.213Q462.575 336 480 336q17.425 0 29.212 11.787Q521 359.575 521 377t-11.788 29.213Q497.425 418 480 418Zm0-160q-17.425 0-29.212-11.787Q439 234.425 439 217t11.788-29.213Q462.575 176 480 176q17.425 0 29.212 11.787Q521 199.575 521 217t-11.788 29.213Q497.425 258 480 258Zm119 399q-17.425 0-29.213-11.787Q558 633.425 558 616t11.787-29.213Q581.575 575 599 575t29.213 11.787Q640 598.575 640 616t-11.787 29.213Q616.425 657 599 657Zm113-114q-17.425 0-29.213-11.787Q671 519.425 671 502t11.787-29.213Q694.575 461 712 461t29.213 11.787Q753 484.575 753 502t-11.787 29.213Q729.425 543 712 543Zm113-112q-17.425 0-29.213-11.787Q784 407.425 784 390t11.787-29.213Q807.575 349 825 349t29.213 11.787Q866 372.575 866 390t-11.787 29.213Q842.425 431 825 431ZM361 657q-17.425 0-29.212-11.787Q320 633.425 320 616t11.788-29.213Q343.575 575 361 575q17.425 0 29.212 11.787Q402 598.575 402 616t-11.788 29.213Q378.425 657 361 657ZM248 543q-17.425 0-29.212-11.787Q207 519.425 207 502t11.788-29.213Q230.575 461 248 461q17.425 0 29.212 11.787Q289 484.575 289 502t-11.788 29.213Q265.425 543 248 543ZM135 431q-17.425 0-29.213-11.787Q94 407.425 94 390t11.787-29.213Q117.575 349 135 349t29.212 11.787Q176 372.575 176 390t-11.788 29.213Q152.425 431 135 431Zm315 545V806H290v-60h380v60H510v170h-60Z"/>
+            </svg>
+            <div>Irrigation</div>
+          </div>
+          <div class="flag">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+              <path d="M282 936q-34 0-58-24t-24-59V472l-81-196H40v-60h119l67 160h628q17 0 26 14.5t1 29.5L756 666q51 6 85 44t34 90q0 56-39 95.5T741 935q-57 0-96-39.5T606 800q0-20 5.5-39t16.5-35l-153-13-124 185q-11 17-29.5 27.5T282 936Zm404-264 120-236-556 1 62 147q11 26 32 42t50 19l292 27ZM283 875q2 0 18-10l106-158q-41-4-78.5-20T273 631l-13-28v251q0 9 7.5 15t15.5 6Zm457-4q32 0 53.5-22t21.5-53q0-32-21.5-53.5T740 721q-31 0-53 21.5T665 796q0 31 22 53t53 22Zm-54-199-292-27 292 27Z"/>
+            </svg>
+            <div>Fall Cleanup</div>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
   <script>
